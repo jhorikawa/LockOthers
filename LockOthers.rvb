@@ -1,0 +1,18 @@
+Option Explicit
+'Script written by <Junichiro Horikawa>
+'Script copyrighted by <Junichiro Horikawa>
+'Script version 2010年12月19日 12:12:47
+
+Call Main()
+Sub Main()
+	Dim arrObjects, arrAllObjects
+	arrObjects = Rhino.GetObjects("select objects not to lock",,,True)
+	Rhino.EnableRedraw(False)
+	If Not isNull(arrObjects) Then
+		arrAllObjects = Rhino.NormalObjects()
+	
+		Rhino.LockObjects arrAllObjects
+		Rhino.UnlockObjects arrObjects
+	End If
+	Rhino.EnableRedraw(True)
+End Sub
